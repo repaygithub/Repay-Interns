@@ -173,3 +173,7 @@ It's a never ending learning process and we are happy to help guide you to the a
 ### Useful Git Videos
 
 - [Git Tutorial](https://www.youtube.com/watch?v=HVsySz-h9r4)
+
+## Kanban vs Scrum
+
+- [Kanban vs Scrum](https://www.atlassian.com/agile/kanban/kanban-vs-scrum)
