@@ -24,15 +24,24 @@ Welcome to the Repay team, we are excited to have you on board for our summer in
 
    - [Useful Python Libraries](#useful-python-libraries)
    - [Useful Python Readings](#useful-python-readings)
-   - [Useful Python Videos](#useful-python-videos)
 
 1. [Markdown Resources](#markdown-resources)
 
    - [Useful Markdown Readings](#useful-markdown-readings)
 
 1. [Git Resources](#git-resources)
+
    - [Useful Git Readings](#useful-git-readings)
    - [Useful Git Videos](#useful-git-videos)
+
+1. [Agile Resources](#agile-resources)
+
+   - [Kanban vs Scrum](#kanban-vs-scrum)
+
+1. [Clean Code and Solid Principles](#clean-code-and-solid-principles)
+
+   - [Clean Code](#clean-code)
+   - [Solid Principles](#solid-principles)
 
 ---
 
@@ -55,7 +64,7 @@ If you aren't already aware, javascript has some killer (in our opinion) built i
 
 Javascript also has a concept that some may not be familiar with, that is the concept of **truthy** and **falsy** values (and yes those words are correct, albeit slightly childish). We were able to find a fairly short read that encompasses what is needed to understand this concept.
 
-- [Truthy and Falsy Reading](https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/)
+- [Truthy And Falsy Reading](https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/)
 
 Javascript also has the concept of arrow functions, arrow functions can be odd at first but can actually increase readability of code once you become familiar with it. This is something that we use throughout our code base and is an important concept to grasp. So please check it out and know we will be happy to clarify any questions you may have.
 
@@ -65,7 +74,7 @@ Javascript also has the concept of arrow functions, arrow functions can be odd a
 
 If you prefer videos to reading, these videos provide a high-level overview of the truthy/falsy and arrow function concepts.
 
-- [Truthy and Falsy Video](https://www.youtube.com/watch?v=O7rZJdtG10g)
+- [Truthy And Falsy Video](https://www.youtube.com/watch?v=O7rZJdtG10g)
 - [Arrow Functions Video](https://www.youtube.com/watch?v=dB1KA-yz65s)
 
 ---
@@ -121,7 +130,7 @@ There are multiple versions of Python out there, here at Repay we work in Python
 
 - [Python 2 vs Python 3](https://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html)
 
-With Python 3.6 came f-strings, they are an awesome way of injecting variables into strings.
+With Python 3.6 came f-strings (no Python doesn't just despise strings), they are an awesome way of injecting variables into strings.
 
 - [f-strings](https://realpython.com/python-f-strings/)
 
@@ -143,8 +152,8 @@ At Repay we utilize Github for all of our code repositories. The Channels API te
 
 ### Useful Markdown Readings
 
-- [Best practices for formatting on Github](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)
-- [General Markdown formatting](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+- [Best Practices For Formatting On Github](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)
+- [General Markdown Formatting](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 ---
 
@@ -167,13 +176,33 @@ It's a never ending learning process and we are happy to help guide you to the a
 
 ### Useful Git Readings
 
-- [What is Git](https://medium.freecodecamp.org/what-is-git-and-how-to-use-it-c341b049ae61)
+- [What Is Git](https://medium.freecodecamp.org/what-is-git-and-how-to-use-it-c341b049ae61)
 - [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
 
 ### Useful Git Videos
 
 - [Git Tutorial](https://www.youtube.com/watch?v=HVsySz-h9r4)
 
-## Kanban vs Scrum
+---
 
-- [Kanban vs Scrum](https://www.atlassian.com/agile/kanban/kanban-vs-scrum)
+## Agile Resources
+
+Here at Repay, all of our teams use some form of Agile strategy in prioritizing and finishing tasks or projects. The two specific methods that we use are Kanban and Scrum. If you are not familiar with these methodologies it will be helpful for you to understand what they are and how they can impact your day to day work. We will be going into more detail about these processes on a team by team basis but many companies also implement these strategies and it is helpful to know about them at a high level.
+
+### Kanban vs Scrum
+
+- [An Agile Comparison](https://www.atlassian.com/agile/kanban/kanban-vs-scrum)
+
+---
+
+## Clean Code and Solid Principles
+
+Something that many students don't realize is that code is read more often than it is written. Because of this, it is important that our code is maintainable and easy to read/refactor. In order to encourage this pattern Robert C. Martin (informally referred to as "Uncle Bob"), created a guide of sorts, to help guide decisions in the software development process. The links below contain succinct summaries for both Clean Code and the SOLID principles respectively.
+
+### Clean Code
+
+- [What Is Clean Code](https://medium.com/mindorks/how-to-write-clean-code-lessons-learnt-from-the-clean-code-robert-c-martin-9ffc7aef870c)
+
+### Solid Principles
+
+- [What Are The Solid Principles](https://medium.com/@dhkelmendi/solid-principles-made-easy-67b1246bcdf)
