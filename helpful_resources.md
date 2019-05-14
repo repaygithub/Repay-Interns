@@ -6,9 +6,24 @@ Welcome to the Repay team, we are excited to have you on board for our summer in
 
 ---
 
+## Contacts
+
+If you have any questions before or after starting; feel free to reach out to anyone on our team. Below are people whom you may be working with directly on your first few days here at Repay.
+
+| Team                 | Name               | Email                  |
+| -------------------- | ------------------ | ---------------------- |
+| Repay API (Channels) | Westin Christensen | wchristensen@repay.com |
+| Gateway              | Justin Moran       | jmoran@repay.com       |
+| UI                   | James Nimlos       | jnimlos@repay.com      |
+| BI                   | Michael Guidone    | mguidone@repay.com     |
+| Mobile               | Alex Hough         | ahough@repay.com       |
+
+---
+
 ## Contents
 
 1. [Forward](#forward)
+1. [Contacts](#contacts)
 1. [Javascript Resources](#javascript-resources)
 
    - [Useful Javascript Libraries](#useful-javascript-libraries)
