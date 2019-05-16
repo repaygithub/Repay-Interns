@@ -58,6 +58,8 @@ If you have any questions before or after starting; feel free to reach out to an
    - [Clean Code](#clean-code)
    - [Solid Principles](#solid-principles)
 
+1. [Postman](#postman)
+
 ---
 
 ## Javascript Resources
@@ -221,3 +223,9 @@ Something that many students don't realize is that code is read more often than 
 ### Solid Principles
 
 - [What Are The Solid Principles](https://medium.com/@dhkelmendi/solid-principles-made-easy-67b1246bcdf)
+
+## Postman
+
+Postman is a powerful tool often used to assist in the development, testing and documenting of API's. Our team uses this in all three ways; understanding the basics on how to use this tool will allow you to get up to speed quickly. For a simple tutorial/overview on using Postman checkout the link below.
+
+[Postman Tutorial](https://www.guru99.com/postman-tutorial.html)
