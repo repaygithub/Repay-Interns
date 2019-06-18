@@ -200,6 +200,10 @@ It's a never ending learning process and we are happy to help guide you to the a
 
 - [Git Tutorial](https://www.youtube.com/watch?v=HVsySz-h9r4)
 
+### Presentations
+
+- [Hitchhicker's Guide to Git](./presentations/hitchhickers-guide-to-git/)
+
 ---
 
 ## Agile Resources
