@@ -1,5 +1,10 @@
 # Hitchhicker's Guide to Git
 
+See the presentation hosted at [https://hitchhikers-guide-to-git.netlify.com/](https://hitchhikers-guide-to-git.netlify.com/)
+
+
+## Running locally
+
 This presentation uses a tool called [MDX Deck](https://github.com/jxnblk/mdx-deck)
 to display the presentation.
 
