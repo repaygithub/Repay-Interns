@@ -1,0 +1,18 @@
+{
+  "name": "javascript-101",
+  "version": "1.0.0",
+  "main": "deck.mdx",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "start": "mdx-deck deck.mdx",
+    "prebuild": "yarn clean",
+    "build": "mdx-deck build deck.mdx",
+    "postbuild": "cp -R images dist",
+    "help": "mdx-deck"
+  },
+  "dependencies": {
+    "mdx-deck": "^2.3.2"
+  }
+}

@@ -1,0 +1,1124 @@
+import { Appear, Notes, Image } from 'mdx-deck'
+import { Invert } from 'mdx-deck/layouts'
+import { Head } from '@mdx-deck/components'
+import highlight from '@mdx-deck/themes/syntax-highlighter'
+import RainbowText from '../hitchhickers-guide-to-git/components/RainbowText'
+
+<Head>
+  <title>JavaScript</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+</Head>
+
+export const themes = [
+  highlight
+]
+
+<RainbowText text="JavaScript" />
+
+<div style={{ position: 'fixed', bottom: 0, left: '50%', transform: 'translate(-50%, 0)' }}>
+  Use the left <kbd>&#8678;</kbd> and right <kbd>&#8680;</kbd> arrows to navigate.
+</div>
+
+---
+
+# Brief History
+
+<ul>
+<Appear>
+  <li style={{ margin: '16px 0'}}>Created May 1995 in 10 days</li>
+  <li style={{ margin: '16px 0'}}>First standard was released July 1997 named ECMAScript 1</li>
+  <li style={{ margin: '16px 0'}}>ECMAScript 5 in Dec 2009 brought minor improvements<br/> and some functional features</li>
+  <li style={{ margin: '16px 0'}}>ECMAScript 6 (2015) in June 2015 was a large update</li>
+  <li style={{ margin: '16px 0'}}>Now there are yearly specifications ratified<br/> every June with minor upgrades</li>
+</Appear>
+</ul>
+
+<Notes>
+ ECMAScript is the formal standardized language of JavaScript; effectively they are one in the same.
+ I will try to version features which are >= ES2015
+</Notes>
+
+---
+
+# ES2015
+
+Sometimes referred to as ES6 or ECMAScript 2015
+
+Massive expansion which added `Promises`, `let`/`const`,<br/>
+new array and object functions, the module system, and others.
+
+<Notes>
+  All of the code we write is using ES2015+ features
+</Notes>
+
+---
+
+## Runtime environment
+
+<Appear>
+
+Browsers parse and run the JavaScript
+
+JS developers do not control the runtime
+
+Browsers have to implement language features
+
+Users don't like updating
+
+</Appear>
+
+---
+
+## Babel
+
+`Babel` is a JavaScript tool that<br/>
+converts current features into backwards<br/>
+compatible JS
+
+[BabelJS REPL](https://babeljs.io/repl)
+
+---
+
+# What is JavaScript
+
+A loose typed or dynamic language.
+
+`var a = 1; a = true; // allowed`
+
+`if ('false') { /* will run */ }`
+
+---
+
+# Primative Data Types
+
+<ul>
+<Appear>
+  <li style={{ margin: '16px 0'}}>Boolean</li>
+  <li style={{ margin: '16px 0'}}>Numbers</li>
+  <li style={{ margin: '16px 0'}}>Strings</li>
+  <li><code style={{ margin: 0 }}>null</code></li>
+  <li><code style={{ margin: 0 }}>undefined</code></li>
+  <li style={{ margin: '16px 0'}}>Symbols (ES2015)</li>
+</Appear>
+</ul>
+
+---
+
+# Object Data Types
+
+Everything else is just an Object! 😅
+
+<ul>
+<Appear>
+  <li style={{ margin: '16px 0'}}>Object</li>
+  <li style={{ margin: '16px 0'}}>Array</li>
+  <li style={{ margin: '16px 0'}}>Function</li>
+  <li style={{ margin: '16px 0'}}>Class (ES2015)</li>
+  <li style={{ margin: '16px 0'}}>Promise (ES2015)</li>
+  <li style={{ margin: '16px 0'}}>AsyncFunction (ES2017)</li>
+  <li style={{ margin: '16px 0'}}>There are more, but this is all we care for now</li>
+</Appear>
+</ul>
+
+---
+
+# Objects
+
+```js
+// object literal
+let moon = { darkside: 'aliens' }
+
+// constructor - DON'T DO THIS
+let sun = new Object()
+sun.isHot = true
+```
+
+---
+
+## Object for..in loop
+
+```js
+let boot = { laces: 'brown' }
+
+for (const key in boot) {
+  if (boot.hasOwnProperty(key)) {
+    console.log(key) // > laces
+  }
+}
+```
+
+---
+
+## Object iterators
+
+```js
+Object.keys(boot)
+// > ['laces']
+
+Object.values(boot)
+// > ['brown']
+
+Object.entries(boot)
+// > [['laces', 'brown']]
+```
+
+<Notes>
+  The most interesting part of the Object are it's static properties
+  like Object.keys and Object.entries
+</Notes>
+
+---
+
+## Clone an object
+
+```js
+let sheep = { wool: 'great' }
+
+let dolly = { ...sheep } // ES2015
+
+let blackDolly = Object.assign(
+  {},
+  sheep,
+  { black: true }
+)
+```
+
+<Notes>
+  Object.assign is not recursive, so keys that reference an object type
+  will copy the object reference not the value
+</Notes>
+
+---
+
+# Arrays
+
+```js
+let french = ['fries', 'toast']
+
+let chairs = new Array('table', 'lounge')
+
+let numbers = new Array(3)
+// Actually empty array of length 3
+```
+
+---
+
+## Array mutators
+
+```js
+// add two to end
+arr.push('foo', 'bar')
+// one off end
+let last = arr.pop()
+// one off front
+let first = arr.shift()
+// add to front
+arr.unshift('wow')
+// can add and remove random items in array
+arr.splice(1, 1, 'qaz')
+```
+
+---
+
+## Array mutators
+
+```js
+// in place flip
+arr.reverse()
+// sorts array
+arr.sort()
+// all zeros now
+arr.fill(0) // ES2015
+```
+
+---
+
+## Array loops
+
+```js
+let looper = ['JGL', 'Bruce Willis', 'Emily Blunt']
+for (let i = 0; i < looper.length; ++i) { }
+
+looper.forEach((value, i) => { })
+```
+
+---
+
+## Copy Arrays
+
+```js
+let cars = ['sedan', 'truck']
+let alsoCars = cars.slice()
+let carsAndBikes = cars.concat(['mountain', 'road'])
+
+let toyotas = cars.map(car => 'toyota ' + car)
+// > ['toyota car', 'toyota truck']
+```
+
+---
+
+# Functions
+
+```js
+function add(a, b) { return a + b }
+const add = (a, b) => a + b // ES2015
+
+// DON'T USE THIS
+const add = new Function('a', 'b', 'return a + b')
+```
+
+<Notes>
+  Functions are first class citizens in JS
+  JS is a very functional friendly language
+</Notes>
+
+---
+
+## `this` context
+
+Inside a function, the value of this depends on how the function is called.
+
+---
+
+```js
+const joe = {
+  name: 'joe',
+  greet: function() {
+    return 'Hi, I\'m ' + this.name
+  },
+}
+console.log(joe.greet())
+var greetReference = joe.greet
+console.log(greetReference())
+```
+
+---
+
+the `greet()` function lost `this`<br/>
+context when I referenced it
+
+---
+
+```js
+const joe = {
+  name: 'joe',
+  greet: function() {
+    return 'Hi, I\'m ' + this.name
+  },
+}
+// bind `joe` as `this`
+joe.greet = joe.greet.bind(joe)
+
+console.log(joe.greet())
+var greetReference = joe.greet
+console.log(greetReference())
+```
+
+---
+
+## Arrow Functions (ES2015)
+
+The only difference that matters to beginners
+
+<Appear>
+
+It has no `this`, so it retains the surounding this,<br/>
+effectively "binding" `this`
+
+used a LOT in React
+
+</Appear>
+
+---
+
+```jsx
+class Button extends React.Component {
+  handleClick() { /* DOES THINGS */ }
+  render() {
+    return (
+      <button onClick={() => this.handleClick()}>
+        Submit
+      </button>
+    )
+  }
+}
+```
+
+---
+
+# class
+
+How a fancy person spells "function"
+
+<Appear>
+
+No seriously, let's go look<br/>
+at what Babel turns it into
+
+</Appear>
+
+---
+
+```js
+class Dog {}
+
+let brady = new Dog()
+Dog() // THROWS
+```
+
+---
+
+## class nuances
+
+If the class has a parent, you must call super()<br/>
+before you can reference this
+
+---
+
+```js
+// GOOD
+class Person extends Thing {
+  constructor(name, age) {
+    super(name)
+    this.age = age
+  }
+}
+
+// BAD
+class Person extends Thing {
+  constructor(name, age) {
+    this.age = age // THROWS
+    super(name)
+  }
+}
+```
+
+---
+
+# Asynchronous Code (non-sequitor)
+
+What is asychronous code?
+
+<Appear>
+
+Code is set to run later when something<br/>
+else has occurred or finished
+
+</Appear>
+
+---
+
+## Examples of async
+
+<ul>
+<Appear>
+  <li style={{ margin: '16px 0'}}>Event listeners</li>
+  <li style={{ margin: '16px 0'}}>Timers</li>
+  <li style={{ margin: '16px 0'}}>callbacks</li>
+  <li style={{ margin: '16px 0'}}>Promises</li>
+</Appear>
+</ul>
+
+---
+
+```js
+let button = document.getElementByTagName('button')[0]
+button.addEventListener('click', function(event) {
+  console.log('button was clicked')
+})
+```
+
+---
+
+```js
+setTimeout(() => {
+  console.log('it has been about 500ms')
+}, 500)
+```
+
+<Notes>
+  Why is it "about" and not exactly?
+  A: Single thread could be blocked
+</Notes>
+
+---
+
+```js
+let img = new Image()
+img.onload = () => console.log('image loaded!')
+img.src = 'https://www.google.com/logo.jpg'
+```
+
+---
+
+#### The problem with callbacks
+
+```js
+img.onload = function () {
+  let response = makeRequest(img.src)
+  response.onload = function () {
+    let module = loadJavaScript(response)
+    module.onload = function() {
+      module.methodIWanted()
+    }
+  }
+}
+```
+
+---
+
+```js
+let img = new Image()
+const waiting = new Promise(resolve => {
+  img.onload = resolve
+})
+img.src = 'https://www.google.com/logo.jpg'
+
+waiting.then(() => console.log('image loaded!'))
+```
+
+---
+
+# Promises (ES2015)
+
+sometimes called "thenables"
+
+---
+
+```js
+const loading = new Promise((resolve, reject) => {
+  taskThatTakesTime((error, result) => {
+    if (error) reject(error)
+    else resolve(result)
+  })
+})
+```
+
+---
+
+```js
+loading
+  .then(result => {
+    // use result
+  })
+  .catch(error => {
+    // report error
+  })
+```
+
+<Notes>
+  use then and catch functions to use results or error when ready
+  every then or catch returns a new promise to listen to
+</Notes>
+
+---
+
+```js
+loading.then(result => {
+  // always return inner promises
+  // even if you don't need the next value
+  return anotherAsyncTask(result)
+}).catch(error => {
+  // this ensures errors will bubble up
+})
+```
+
+Ideally you should always provide a catch
+
+---
+
+# AsyncFunctions (ES2017)
+
+```js
+async function load(arg) {
+  let result = await longPromisedTask(arg)
+  return result
+}
+// same as
+function load(arg) {
+  return longPromisedTask(arg)
+}
+// Literally, I'm not kidding
+```
+
+---
+
+Even promises can become hard to follow
+
+```js
+function() {
+  return loadConfig().then(config => {
+    if (config.needsKey) {
+      return loadKey(config).then(userKey => {
+        return loadData(userKey)
+      })
+    }
+    return loadData()
+  })
+}
+```
+
+---
+
+Mostly useful when there are lots of async tasks and branches
+
+```js
+async function() {
+  let config = await loadConfig()
+  let userKey = config.needsKey
+    ? (await loadKey(config))
+    : undefined
+  config.data = await loadData(userKey)
+  return config
+}
+```
+
+---
+
+# Common nuances of JS
+
+---
+
+# value vs reference
+
+<Appear>
+<h3>
+  Primitives are passed as value<br/>
+  Objects are passed as reference
+</h3>
+</Appear>
+
+---
+
+```js
+let func = function() {};
+
+function getFunc() {
+  return func;
+}
+```
+
+You are returning a reference to the function.
+
+---
+
+`const` (ES2015) can't change reference, but properties can change
+
+```js
+'use strict';
+const obj = {}
+obj.updated = true
+// no errors
+```
+
+---
+
+
+There is an Object.freeze function, however it's not recursive
+
+```js
+'use strict';
+const obj = Object.freeze({ foo: {} })
+obj.foo.updated = true
+// no error
+obj.updated = true
+// TypeError: can't define property... 
+// "updated": Object is not extensible
+```
+
+---
+
+#### Wait, what was that `'use strict';`?
+
+<Appear>
+
+`'use strict';` is a directive
+
+when added at the top of a function or<br/>
+file it means JavaScript will error when you<br/>
+perform illegal actions.
+
+</Appear>
+
+---
+
+#### Wait, why doesn't JS just always error?
+
+<Appear>
+
+Errors weren't added until ECMAScript 3
+
+You wouldn't want some analytics error<br/>
+preventing a form submission
+
+ES Modules are always strict mode.
+
+</Appear>
+
+---
+
+## mutate vs immutable
+
+```js
+function mutateArray(arr) {
+  arr.push('I am now a mutant!')
+}
+
+function immutableArray(arr) {
+  return arr.concat(
+    'I am a new array with added value'
+  )
+}
+```
+
+---
+
+## mutate vs immutable
+
+```js
+function mutateObject(obj) {
+  obj.newVal = 'I am now a mutant!'
+}
+
+function immutableObject(obj) {
+  return {
+    ...obj,
+    newVal: 'I am a new object with added value'
+  }
+}
+```
+
+---
+
+## Mutability
+
+Best practice is to not mutate values you don't own.
+
+<Appear>
+
+If the variable comes from outside the file, don't mutate.<br/>
+Return a copy instead.
+
+</Appear>
+
+---
+
+# Equality - truthy vs falsy
+
+<div style={{ padding: '0 10vh' }}>
+
+JS has the concept of "truthy" and "falsy" so not every
+if statement has to receive a boolean.
+
+```js
+if (nonBooleanValue) {
+  // valid javascript
+}
+```
+
+</div>
+
+---
+
+| x             | Boolean(x)               |
+| ------------- | ------------------------ |
+| undefined     | false                    |
+| null          | false                    |
+| boolean value | no change                |
+| number value  | 0 -> false, NaN -> false |
+|               | other numbers -> true    |
+| string value  | '' -> false              |
+|               | other strings -> true    |
+| object value  | always true              |
+
+<a href="https://exploringjs.com/impatient-js/ch_booleans.html#converting-to-boolean">Source</a>
+
+---
+
+### falsy values are:
+
+`false, null, undefined`
+
+`"", ''`
+
+`0, NaN`
+
+---
+
+## What this means
+
+```js
+var str = "";
+if (str) {
+  // will not run
+}
+
+var num = 0;
+if (num) {
+  // will not run
+}
+```
+
+---
+
+## better
+
+```js
+var str = "";
+if (typeof str === "string") {
+  // will run
+}
+
+var num = 0;
+if (num !== undefined && num !== null) {
+  // will run
+}
+```
+
+---
+
+### truthy values:
+
+`true`
+
+_any number except:_ `0, NaN`
+
+non-blank string
+
+any object (empty too)
+
+---
+
+## What this means
+
+```js
+// bad
+var arr = [];
+if (arr) {
+  // will always run
+}
+
+// good
+var arr = [];
+if (Array.isArray(arr) && arr.length) {
+  // will not run
+}
+```
+
+---
+
+# Equality - comparison
+
+`== vs ===`
+
+<Appear>
+
+double equals will 'coerce' to the lowest primitive in the expression
+
+e.g. `0 == '0' >>> true`
+
+</Appear>
+
+<Notes>The number zero was actually coerced to a string</Notes>
+
+---
+
+### but also
+
+<Appear>
+
+`false == 0 >>> true`
+
+`'' == 0 >>> true`
+
+`[1, 2, 3] == '1,2,3' >>> true`
+
+`[1, 2, 3] == [1, 2, 3] >>> false`
+
+🧐
+
+</Appear>
+
+---
+
+Objects are only equivalent if they are the exact object reference.
+
+```js
+let obj = {};
+console.log(obj == obj); // > true
+```
+
+---
+
+### Best practice is to use '===' and be explicit
+
+```js
+if (value !== undefined 
+  && value !== null) {
+  // work with value
+}
+```
+
+---
+
+# Closures
+
+Otherwise known as function scope
+
+---
+
+JS functions have access to variables in scope.
+
+```js
+// state.js
+let value = 0
+
+export default {
+  add() { ++value }
+  subtract() { --value }
+  get() { return value }
+}
+```
+
+---
+
+This is how babel provides `this` to arrow functions
+
+```js
+function Person(name) {
+  var _this = this
+  // this may change, but _this will always be scoped
+  _this.greet = function() {
+    return "Hi, I'm " + _this.name
+  }
+}
+```
+
+---
+
+# Modules
+
+Dependency managment
+
+There used to not be any standard model for dependencies
+
+---
+
+## `require.js`
+
+```js
+// store.js
+define(['../user.js'], function (user) {
+  var value = user.getClicks()
+
+  return {
+    add: function add(num) {
+      value += num
+    }
+  }
+})
+```
+
+---
+
+## commonjs
+
+Created for Node.js, inspired by require.js
+
+```js
+const user = require('../user.js')
+let value = user.getClicks()
+
+module.exports = {
+  add: function add(num) {
+    value += num
+  }
+}
+```
+
+---
+
+Both of these were never standardized,<br/>
+Ultimately because they're the wrong solution<br/>
+for web.
+
+---
+
+# ES Modules (ES2015)
+
+<Appear>
+<div>
+
+```js
+import user from '../user.js'
+
+let value = user.getClicks()
+
+export default {
+  add(num) {
+    value += num
+  }
+}
+```
+
+</div>
+</Appear>
+
+---
+
+# default export
+
+```js
+import add from './add.js'
+
+import { default as add } from './add.js'
+
+export default function add () {
+  // do main
+}
+```
+
+---
+
+# named exports
+
+```js
+import { add } from '../math.js'
+
+export function add() { }
+
+function add() { }
+export { add }
+```
+
+---
+
+# Destructuring
+
+```js
+let list = ['apples', 'oranges', 'pineapple']
+let [apples, oranges] = list
+
+let props = { type: 'joke', status: 'flat' }
+let { type, status } = props
+```
+
+---
+
+# Spread Operator
+
+```js
+let things = ['foo', 'bar']
+let newThings = [...things]
+let thingsPlus = [...things, 'bonus']
+function callMe(foo, bar) { }
+callMe(...things)
+```
+
+---
+
+# Template Literals
+
+<img src="./images/template-literals.png" style={{ height: '25vh' }} />
+
+---
+
+# JavaScript Ecosystem
+
+Ways to run JavaScript.
+
+What are the package managers.
+
+<Notes>
+  The JavaScript runtime is the system that parses and executes JavaScript.
+</Notes>
+
+---
+
+## Chrome's V8
+
+The JavaScript runtime developed by Google<br/>
+to run JS in their Chrome browser.
+
+---
+
+## Node.js
+
+<ul>
+<Appear>
+  <li style={{ margin: '16px 0'}}>Introduced in 2008</li>
+  <li style={{ margin: '16px 0'}}>Allows running JavaScript outside a browser</li>
+  <li style={{ margin: '16px 0'}}>Now among the most popular server languages</li>
+  <li style={{ margin: '16px 0'}}>Uses Chrome V8 runtime</li>
+</Appear>
+</ul>
+
+---
+
+# Debugging JavaScript
+
+```js
+debugger
+console.log('hi!')
+```
+
+The browser will always log, but only<br/>
+stop execution when devtools is open.
+
+---
+
+## Source Maps
+
+Source maps were introduced to help debug<br/>
+production code that was minified.
+
+It is a separate `.map` file that let's the<br/>
+browser know what the code looked like when<br/>
+it was written, before transpilling and minifying.
+
+---
+
+## Starting Node.js with the inspector
+
+```sh
+node --inspect-brk ./script.js
+```
+
+Open [chrome://inspect](chrome://inspect) to access<br/>
+the node inspector instances.
+
+---
+
+# Further Recommended Reading
+
+- [Accessibility on the web](https://developer.mozilla.org/en-US/docs/Learn/Accessibility)
+  - writing semantic html
+  - Web Accessibility Initiative - Accessible Rich Internet Applications (WAI-ARIA)
+- [Learn CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS)
+  - What is the cascade?
+  - What is CSS specificity?
+- [Write your first shell script with Node.js](https://medium.com/@mattcroak718/write-your-first-shell-script-with-node-js-c612da65b1e1)
+  - Automation though scripting is one of the best ways to speed up the development workflow
+
+<Notes>
+  This talk only covers JS basics.<br/>
+  For a holistic understanding of front-end<br/>
+  development you should read about semantic<br/>
+  html and CSS.
+</Notes>
+
+---
+
+# Sources
+
+- [_JavaScript for impatient programmers_ by Dr. Axel Rauschmayer](https://exploringjs.com/impatient-js/)
+- [MDN JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+---
+
+# Demo Review
+
+---
+
+# Thank you
