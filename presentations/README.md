@@ -5,3 +5,5 @@
   - Very brief introduction to advanced usages which may be useful to know later
 - [JavaScript in an Hour](./javascript/)
   - Quick overview to the JavaScript and ecosystem
+- [React & UI Tooling](./react-tooling/)
+  - Introduction to React and associated tools
