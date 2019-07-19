@@ -1,0 +1,19 @@
+{
+  "name": "react-tooling",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "present": "mdx-deck deck.mdx",
+    "dev": "repay-scripts dev -p 3437 src/index.js"
+  },
+  "dependencies": {
+    "@reach/router": "^1.2.1",
+    "@repay/cactus-web": "^0.4.5",
+    "@repay/scripts": "^0.3.1",
+    "mdx-deck": "^2.3.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.3.2"
+  }
+}

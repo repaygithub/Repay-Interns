@@ -1,0 +1,173 @@
+import { syntaxHighlighterPrism } from 'mdx-deck/themes'
+import customTheme from './theme'
+import { Split, SplitRight } from '@mdx-deck/layouts'
+
+export const themes = [
+  customTheme,
+  syntaxHighlighterPrism
+]
+
+
+# React/UI Tooling
+
+---
+
+# What is React?
+
+- JavaScript library used for building user interfaces
+- Divides a UI into smaller pieces called components
+- Uses JSX to add HTML elements to a page
+- Manages component-level state to control how information is displayed
+- Allows for declarative UI development
+
+---
+
+# Components
+
+- Building blocks of a React application
+- Class/Functional components
+- Use props to pass data down to different components
+- Every component has a state
+
+---
+
+# JSX
+
+- React extension that allows us to write code that *looks like* HTML
+- JSX elements have tag names and attributes just like HTML
+- Allows us to bridge JavaScript & HTML
+
+---
+
+# State
+
+- Should contain data important to the component
+- Changes to state trigger a re-render
+- Any data that may have an affect on what is rendered should be stored in the state
+
+---
+<Split>
+An Example of a Class Component
+
+```jsx
+import React from 'react'
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { clicked: 0 }
+  }
+  onClick = () => {
+    const count = this.state.clicked
+    this.setState({ clicked: count++ })
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={onClick}>Click me</button>
+        <span>You clicked {this.state.clicked} times</span>
+      </div>
+    )
+  }
+}
+```
+</Split>
+
+---
+<SplitRight>
+An Example of a Functional Component
+
+```jsx
+import React, { useState } from 'react'
+export const MyComponent = props => {
+  const [clicked, setClicked] = useState(0)
+  const onClick = () => {
+    const count = clicked
+    setClicked(clicked => (count++))
+  }
+  return (
+    <div>
+      <button onClick={onClick}>Click me</button>
+      <span>You clicked {clicked} times</span>
+    </div>
+  )
+}
+```
+</SplitRight>
+
+---
+
+# What Tooling Exists for React?
+
+- CSS
+- Routers
+- Redux
+- Testing Libraries
+- React Dev Tools
+
+---
+
+# CSS (Cascading Style Sheets)
+
+- React renders the components, but CSS is responsible for styling
+- Define classNames and styles in CSS and provide the classNames to JSX elements
+- Colors, borders, layout/positioning, animations/translations, etc
+- Some CSS features limited in certain browsers (cough cough, IE)
+
+---
+
+# Routers
+
+- Handle the navigation to & from different pages in an application
+- Each `<Route />` gets a `path` and a `component`
+- Routers provide `<Link />` components that accept a `to` prop, which corresponds to a `path`
+- `react-router`
+- `@reach/router`
+
+---
+
+# Redux
+
+- Used for application state management
+- Create a store
+- Update store by dispatching actions
+- Reducer functions decide what to do with an action and its payload, & return a new state
+- Useful when data should persist at a global level (user session, caching, etc)
+
+---
+
+# Testing Libraries
+
+- Jest
+- React Testing Library
+- Enzyme
+- Test Cafe
+- Puppeteer
+
+---
+
+# React Dev Tools
+
+- Chrome extension to assist with React debugging
+- Enables inspection of the the React component hierarchy in the browser
+- Allows modification of component props & state
+
+---
+
+# Why is React a Good Choice for Us?
+
+- Large dynamic front end applications
+- Reusable components
+- Virtual DOM (very efficient)
+- Declarative UI
+
+---
+
+# What is Declarative UI?
+
+- Components can render content given the *what*, not the *how*.
+- Separate the look of the UI from the logic/behavior
+
+
+---
+
+# Demo Time
