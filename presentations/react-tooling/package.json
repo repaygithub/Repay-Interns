@@ -8,12 +8,12 @@
     "dev": "repay-scripts dev -p 3437 src/index.js"
   },
   "dependencies": {
-    "@reach/router": "^1.2.1",
-    "@repay/cactus-web": "^0.4.5",
+    "@reach/router": "^1.3.4",
+    "@repay/cactus-web": "^3.0.0",
     "@repay/scripts": "^2.0.0",
     "mdx-deck": "^2.3.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "styled-components": "^4.3.2"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.2.0"
   }
 }
