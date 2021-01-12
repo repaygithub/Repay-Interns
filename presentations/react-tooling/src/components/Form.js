@@ -15,8 +15,12 @@ const getInitialState = () => (
 const Form = props => {
   const [state, setState] = useState(getInitialState())
 
-  const handleChange = (name, value) => {
-    setState(state => ({ ...state, [name]: value }))
+  const handleChange = ({ target }) => {
+    setState(state => ({ ...state, [target.name]: target.value }))
+  }
+
+  const handleChecked = ({ target }) => {
+    setState(state => ({ ...state, [target.name]: target.checked }))
   }
 
   const handleSubmit = (event) => {
@@ -53,20 +57,20 @@ const Form = props => {
           label="Toggle 1"
           mt={5}
           value={state.toggle1}
-          onChange={handleChange}
+          onChange={handleChecked}
         />
         <ToggleField
           name="toggle2"
           label="Toggle 2"
           mt={5}
           value={state.toggle2}
-          onChange={handleChange}
+          onChange={handleChecked}
         />
         <CheckBoxField
           name="checkbox"
           label="Checkbox"
           mt={5}
-          onChange={handleChange}
+          onChange={handleChecked}
         />
         <Flex justifyContent="center">
           <Button
